@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import { Pressable, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 const buttonVariants = cva(
   'flex flex-row items-center justify-center rounded-full',

@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import Container from '@/components/Screen';
-import { Input } from '@/components/Input';
-import { Checkbox } from '@/components/Checkbox';
+import Container from '@/components/ui/Screen';
+import { Input } from '@/components/ui/Input';
+import { Checkbox } from '@/components/ui/Checkbox';
 import { Link } from 'expo-router';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 
 const Register = () => {
   return (

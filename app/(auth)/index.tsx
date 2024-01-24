@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import Container from '@/components/Screen';
-import { Button } from '@/components/Button';
-import { Input } from '@/components/Input';
+import Container from '@/components/ui/Screen';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 import { Link } from 'expo-router';
 
 const Login = () => {

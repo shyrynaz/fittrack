@@ -5,7 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <View style={{ flex: 1 }}>{children}</View>
+      <View style={{ flex: 1 }} className='bg-white'>
+        {children}
+      </View>
     </SafeAreaView>
   );
 };
