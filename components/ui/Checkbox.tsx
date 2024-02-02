@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 // TODO: make controlled (optional)
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof View> {
@@ -18,7 +18,7 @@ function Checkbox({
   labelClasses = 'text-gray-500 dark:text-white',
   ...props
 }: CheckboxProps) {
-  const [isChecked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setChecked(prev => !prev);
@@ -32,10 +32,10 @@ function Checkbox({
       <TouchableOpacity onPress={toggleCheckbox}>
         <View
           className={cn(checkboxClasses, {
-            'bg-black dark:bg-white': isChecked
+            'bg-black dark:bg-white': checked
           })}
         >
-          {isChecked && (
+          {checked && (
             <Text className='text-white dark:text-black text-xs'>✓</Text>
           )}
         </View>

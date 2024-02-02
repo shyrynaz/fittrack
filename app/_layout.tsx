@@ -14,6 +14,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary
@@ -55,20 +56,22 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <SafeAreaProvider>
-      <StatusBar style='auto' />
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <ThemeProvider
-          value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-        >
-          <Stack>
-            <Stack.Screen name='index' options={{ headerShown: false }} />
-            <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-            <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-            <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
-          </Stack>
-        </ThemeProvider>
-      </GestureHandlerRootView>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <SafeAreaProvider>
+          <StatusBar style='auto' />
+          <ThemeProvider
+            value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+          >
+            <Stack>
+              <Stack.Screen name='index' options={{ headerShown: false }} />
+              <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+              <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+              <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
+            </Stack>
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }

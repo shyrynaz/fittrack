@@ -1,6 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { Button } from '../Button';
+import { Button } from '../ui/Button';
 
 describe('Button', () => {
   it('renders with default props', () => {

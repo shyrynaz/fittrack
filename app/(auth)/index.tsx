@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import Container from '@/components/Screen';
-import { Button } from '@/components/Button';
-import { Input } from '@/components/Input';
+import Container from '@/components/ui/Screen';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 import { Link } from 'expo-router';
 
 const Login = () => {
@@ -18,18 +18,20 @@ const Login = () => {
             placeholder='Email'
             textContentType='emailAddress'
             icon='envelope'
+            className='h-16'
           />
           <Input
             placeholder='Password'
             textContentType='password'
             icon='lock'
+            className='h-16'
           />
         </View>
         <View className='bottom-10 mb-4'>
           <Button variant='default' label='Login' size='xl' icon='login' />
           <View className='border border-gray-200 my-4' />
           <View className='flex flex-row items-center justify-center '>
-            <Link href='/(auth)/register'>
+            <Link href='/(auth)/register' asChild>
               <Text className='text-gray-800 text-lg'>
                 Don't have an account yet?{' '}
                 <Text className='font-bold text-purple-500'>Register</Text>{' '}
