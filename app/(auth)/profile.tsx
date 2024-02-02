@@ -2,7 +2,6 @@ import { View, Text } from 'react-native';
 import React, { useState } from 'react';
 import Container from '@/components/ui/Screen';
 import { Input } from '@/components/ui/Input';
-import { Checkbox } from '@/components/ui/Checkbox';
 import { Link } from 'expo-router';
 import { Button } from '@/components/ui/Button';
 import Profile from '@/assets/svg/profile';
@@ -26,7 +25,7 @@ const UserProfile = () => {
               It will help us to know more about you!
             </Text>
           </View>
-          <View className='flex-1 mt-1 flex flex-col gap-2'>
+          <View className='flex-1 mt-1 flex flex-col gap-4'>
             <Select
               placeholder='Choose gender'
               icon='users'
@@ -64,9 +63,9 @@ const UserProfile = () => {
               </View>
             </View>
           </View>
-          <View className='bottom-0 mt-4'>
+          <View className='bottom-0 mt-8'>
             <Link href='/(auth)/goal' asChild>
-              <Button variant='default' label='Next' size='xl' />
+              <Button variant='default' label='Next' size='lg' />
             </Link>
           </View>
         </View>

@@ -17,17 +17,19 @@ const Register = () => {
           </Text>
         </View>
         <View className='flex-1 mt-10 flex flex-col gap-4'>
-          <Input placeholder='First Name' icon='user' />
-          <Input placeholder='Last Name' icon='user' />
+          <Input placeholder='First Name' icon='user' className='h-16' />
+          <Input placeholder='Last Name' icon='user' className='h-16' />
           <Input
             placeholder='Email'
             textContentType='emailAddress'
             icon='envelope'
+            className='h-16'
           />
           <Input
             placeholder='Password'
             textContentType='password'
             icon='lock'
+            className='h-16'
           />
           <Checkbox
             className='mt-4'

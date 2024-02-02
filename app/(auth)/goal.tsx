@@ -1,50 +1,43 @@
 import {
   View,
   Text,
-  Dimensions,
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
   StyleSheet
 } from 'react-native';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Container from '@/components/ui/Screen';
 import { useSharedValue } from 'react-native-reanimated';
 import CarouselItem, { DataType } from '@/components/CarouselItem';
 import { Link } from 'expo-router';
 import { Button } from '@/components/ui/Button';
+import Lift from '@/assets/svg/lift';
+import Jump from '@/assets/svg/jump';
+import Run from '@/assets/svg/run';
 
 const carouselItems = [
   {
     title: 'Improve Shape',
     description:
       'I have a low amount of body fat and need / want to build more muscle',
-    icon: '',
-    image:
-      'https://images.unsplash.com/photo-1678436748951-ef6d381e7a25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDN8YWV1NnJMLWo2ZXd8fGVufDB8fHx8fA%3D%3D',
-    ar: 0.7
+    icon: <Lift />
   },
   {
     title: 'Lean & Tone',
     description:
       'I’m “skinny fat”. look thin but have no shape. I want to add learn muscle in the right way',
-    icon: '',
-    image:
-      'https://images.unsplash.com/photo-1680813977591-5518e78445a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ar: 0.67
+    icon: <Jump />
   },
   {
     title: 'Lose Fat',
     description:
       'I have over 20 lbs to lose. I want to drop all this fat and gain muscle mass',
-    icon: '',
-    image:
-      'https://images.unsplash.com/photo-1679508056887-5c76269dad54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ar: 0.8
+    icon: <Run />
   }
 ];
 
-const goal = () => {
+const Goal = () => {
   const scrollXOffset = useSharedValue(0);
   const renderItem = ({ item, index }: { item: DataType; index: number }) => (
     <CarouselItem item={item} scrollX={scrollXOffset} index={index} />
@@ -67,7 +60,7 @@ const goal = () => {
         <FlatList
           data={carouselItems}
           renderItem={renderItem}
-          keyExtractor={item => item.image.toString()}
+          keyExtractor={item => item.title.toString()}
           horizontal
           showsHorizontalScrollIndicator={false}
           onScroll={onScroll}
@@ -75,9 +68,9 @@ const goal = () => {
           contentContainerStyle={styles.listStyle}
           scrollEventThrottle={16}
         />
-        <View className='mt-5 bottom-10 px-12'>
+        <View className='mt-5 bottom-5 px-8 mr-4'>
           <Link href='/(auth)/profile' asChild>
-            <Button variant='default' label='Confirm' size='xl' icon='login' />
+            <Button variant='default' label='Confirm' size='lg' />
           </Link>
         </View>
       </View>
@@ -92,7 +85,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  listStyle: { paddingHorizontal: 16 }
+  listStyle: {
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
 
-export default goal;
+export default Goal;

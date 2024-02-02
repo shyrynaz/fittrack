@@ -2,6 +2,7 @@ import { View, Text, Dimensions } from 'react-native';
 import React, { useMemo } from 'react';
 import Animated, {
   Extrapolate,
+  Extrapolation,
   interpolate,
   useAnimatedStyle
 } from 'react-native-reanimated';
@@ -9,13 +10,11 @@ import Lift from '@/assets/svg/lift';
 
 const { width: SCREEN_WIDTH, height } = Dimensions.get('window');
 
-const CARD_WDTH = SCREEN_WIDTH * 0.9;
+const CARD_WDTH = SCREEN_WIDTH * 0.86;
 
 export type DataType = {
   title: string;
-  icon: string;
-  image: string;
-  ar: number;
+  icon: React.ReactNode;
   description: string;
 };
 
@@ -26,27 +25,35 @@ type ItemProps = {
 };
 
 const CarouselItem = ({ scrollX, index, item }: ItemProps) => {
-  const inputRange = useMemo(
-    () => [(index + 0.5) * CARD_WDTH, (index + 1) * CARD_WDTH],
-    [index]
-  );
-  const outputRange = useMemo(() => [CARD_WDTH, index + 1], []);
   const rnStyle = useAnimatedStyle(() => {
+    const inputRange = [
+      (index - 1) * CARD_WDTH,
+      index * CARD_WDTH,
+      (index + 1) * CARD_WDTH
+    ];
+    const outputRange = [height * 0.4, height * 0.65, height * 0.4];
+    const opacityRange = [0.6, 1, 0.6];
     return {
       marginRight: 0,
-      width: interpolate(
+      width: CARD_WDTH,
+      height: interpolate(
         scrollX.value,
         inputRange,
         outputRange,
-        Extrapolate.CLAMP
+        Extrapolation.CLAMP
       ),
-      height: height * 0.6
+      opacity: interpolate(
+        scrollX.value,
+        inputRange,
+        opacityRange,
+        Extrapolation.CLAMP
+      )
     };
-  }, [inputRange, outputRange]);
+  }, []);
   return (
     <Animated.View
       style={rnStyle}
-      className={'rounded-3xl bg-[#92A3FD] mx-1 p-4 h-14'}
+      className={'rounded-3xl bg-[#92A3FD] mx-1 p-4 '}
     >
       <View className='flex-1 items-center justify-center'>
         <Lift />

@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { cn } from '../../lib/utils';
 
 const buttonVariants = cva(
-  'flex flex-row items-center justify-center rounded-full',
+  'flex flex-row items-center justify-center rounded-md',
   {
     variants: {
       variant: {
