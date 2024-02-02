@@ -55,9 +55,7 @@ const CarouselItem = ({ scrollX, index, item }: ItemProps) => {
       style={rnStyle}
       className={'rounded-3xl bg-[#92A3FD] mx-1 p-4 '}
     >
-      <View className='flex-1 items-center justify-center'>
-        <Lift />
-      </View>
+      <View className='flex-1 items-center justify-center'>{item.icon}</View>
       <View className='flex flex-col items-center justify-center gap-3 px-6 bottom-10'>
         <Text className='text-white font-bold text-center'>{item.title}</Text>
         <Text className='text-white text-center'>{item.description}</Text>
